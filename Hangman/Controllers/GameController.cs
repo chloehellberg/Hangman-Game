@@ -10,6 +10,7 @@ namespace Hangman.Controllers
     [HttpGet("/game")]
     public ActionResult Index()
     {
+
       List<Guess> allGuesses = Guess.GetAllGuesses();
       return View(allGuesses);
     }

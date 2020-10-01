@@ -8,7 +8,8 @@ namespace Hangman.Controllers
       [HttpGet("/")]
       public ActionResult Index()
       {
-        return View();
+        Game newGame = new Game();
+        return View(newGame);
       }
 
     }

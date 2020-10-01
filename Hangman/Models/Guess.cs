@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace Hangman.Model
+namespace Hangman.Models
 {
   public class Guess
   {
