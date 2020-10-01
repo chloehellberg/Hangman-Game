@@ -1,17 +1,62 @@
 @using Hangman.Models;
 
 <h1>Game</h1>
+<p>@Model.GameWord</p>
+@if (Model.GoodOrBad == true)
+{
+  <p>Correct!</p>
+}
+else
+{
+  <p>No</p>
+}
+
+@switch (Model.GuessesLeft)
+{
+  case 6:
+    <img src='~/img/Hangman-0.png'/>;
+    break;
+  case 5:
+    <img src='~/img/Hangman-1.png'/>;
+    break;
+  case 4:
+    <img src='~/img/Hangman-2.png'/>;
+    break; 
+  case 3:
+    <img src='~/img/Hangman-3.png'/>;
+    break;
+  case 2:
+    <img src='~/img/Hangman-4.png'/>;
+    break; 
+  case 1:
+    <img src='~/img/Hangman-5.png'/>;
+    break; 
+  default:
+    <img src='~/img/Hangman-6.png'/>;
+    <h1>YOU LOSE</h1>
+    break;
+}
+
+@* @foreach (char letter in @Model["word"])   //word=joy    guess=o,v,a
+{
+  @if (letter.Contains(@Model["guesses"].Letter))
+  {
+    <p>@letter</p>
+  }
+  else
+  {
+    <p>__</p>
+  }
+} *@
 
 
-
-
-<h3>Guesses so far</h3>
+@* <h3>Guesses so far</h3>
 <ul>
-  @foreach (Guess guess in Model)
+  @foreach (Guess guess in @Model)
   {
     <li>@guess.Letter</li>
   }
-</ul>
+</ul> *@
 
 <p><a href="/game/guess/new">Guess again</a></p>
 <p><a href="/">Go start new game.</a></p>

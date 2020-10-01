@@ -10,9 +10,37 @@ namespace Hangman.Controllers
     [HttpGet("/game")]
     public ActionResult Index()
     {
-
+      List<Game> allGames = Game.GetAllGames();
+      Game newestGame = allGames[allGames.Count-1];
       List<Guess> allGuesses = Guess.GetAllGuesses();
-      return View(allGuesses);
+      string word = newestGame.GameWord;
+      if (allGuesses.Count == 0)
+      {
+        return View(newestGame);
+      }
+      else
+      {
+        Guess latestGuess = allGuesses[allGuesses.Count-1];
+        if (word.Contains(latestGuess.Letter))
+        {
+          newestGame.GoodOrBad = true;
+          return View(newestGame);
+        }
+        else
+        {
+          newestGame.GoodOrBad = false;
+          newestGame.GuessesLeft--;
+          return View(newestGame);
+        }
+      }
+      
+      // Dictionary<string, object> model = new Dictionary<string, object>();
+      // string word = Game.GetWord();
+      // List<Guess> allGuesses = Guess.GetAllGuesses();
+      // model.Add("word", word);
+      // model.Add("guesses", allGuesses);
+      // model.
+      // return View();
     }
 
     [HttpPost("/game")]

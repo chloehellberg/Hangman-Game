@@ -7,7 +7,6 @@ namespace Hangman.Models
     public string Letter { get; set; }
     private static List<Guess> _instances = new List<Guess> { };
 
-
     public Guess(string letter)
     {
       Letter = letter;
@@ -17,6 +16,11 @@ namespace Hangman.Models
     public static List<Guess> GetAllGuesses()
     {
       return _instances;
+    }
+
+    public static void ClearGuesses()
+    {
+      _instances.Clear();
     }
   }
 }
